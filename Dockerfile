@@ -1,7 +1,7 @@
 FROM caddy
 
 COPY <<EOF /etc/caddy/Caddyfile
-:80 {
+:8080 {
     root * /www
     file_server
 }
