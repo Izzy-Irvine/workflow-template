@@ -3,8 +3,7 @@ name: Create and publish a Docker image
 on:
   push:
     branches:
-      - "main"
-  pull_request:
+      - "**"
 
 env:
   REGISTRY: ghcr.io
@@ -36,8 +35,7 @@ jobs:
       - name: Set Docker tags
         id: set-tags
         run: |
-          git log --oneline --graph
-          if [ "${{ github.event_name }}" != "pull_request" ] && [ "${{ github.ref }}" == "refs/heads/main" ]; then
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
             echo "tags=${{ env.REGISTRY }}/izzy-irvine/workflow-test:${GITHUB_SHA},${{ env.REGISTRY }}/izzy-irvine/workflow-test:latest" >> $GITHUB_ENV
           else
             echo "tags=${{ env.REGISTRY }}/izzy-irvine/workflow-test:${GITHUB_SHA}" >> $GITHUB_ENV
