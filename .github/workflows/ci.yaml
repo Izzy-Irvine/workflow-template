@@ -37,9 +37,9 @@ jobs:
         id: set-tags
         run: |
           if [ "${{ github.event_name }}" != "pull_request" ] && [ "${{ github.ref }}" == "refs/heads/main" ]; then
-            echo "tags=${{ env.REGISTRY }}/isaac-irvine/workflow-test:${GITHUB_SHA},${{ env.REGISTRY }}/isaac-irvine/workflow-test:latest" >> $GITHUB_ENV
+            echo "tags=${{ env.REGISTRY }}/izzy-irvine/workflow-test:${GITHUB_SHA},${{ env.REGISTRY }}/izzy-irvine/workflow-test:latest" >> $GITHUB_ENV
           else
-            echo "tags=${{ env.REGISTRY }}/isaac-irvine/workflow-test:${GITHUB_SHA}" >> $GITHUB_ENV
+            echo "tags=${{ env.REGISTRY }}/izzy-irvine/workflow-test:${GITHUB_SHA}" >> $GITHUB_ENV
           fi
 
       - name: Build and push Docker image
